@@ -1,0 +1,90 @@
+---
+title: "File System in R"
+author: "Joshua Oluoch"
+date: "2/5/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#                          FILE MANAGEMENT IN R
+
+Understanding file management in R is very important for every day user as it dictates how to set environments, input and output data from R, file manipulation among other useful things.
+
+See below some of the quick ways to work with file system in R
+
+### Working Directory 
+
+This is the directory that R system operates from. For projects it defaults to the project folder. To get the current working directory of R, use the command getwd() as below
+
+```{r getwd}
+#NOT RUN
+#getwd()
+```
+
+To set working directory to a folder of your choice, run the command setwd(folder)
+```{r setwd}
+#NOT RUN
+#setwd(/path/to/folder/)
+```
+
+### File manipulation
+The following functions enable easy handling of files in R.
+
+1. **list.files(directory)** - This function is used to list all the files within a directory.
+
+```{r list_files}
+#NOT RUN
+#list.files() #This list all the files in the current folder
+#To get files in another folder you run
+#NOT RUN
+#list.files(/path/to/folder/)
+```
+
+2. **list.dirs(directory)** - This function list all the folders within the given directory.
+
+```{r list_dirs}
+#NOT RUN
+#list.dirs() # This list all the folders in the current directory
+#To get the folders contained in a different directory, you run list.dirs(/path/to/directory/)
+#list.dirs("../") # This lists all the folders of the parent directory, working directory included.
+```
+
+3. **file.access(filename) ** - This function tests if the given file exists in the current folder (0-success, 1-failure)
+```{r file_access}
+file.access("rscfp2019.dta")
+```
+
+4. **file.append(x, y)** -This function appends file y to file x, in-situ on the computer.
+```{r file_append}
+#NOT RUN
+#file.append(file_a, file_b)
+```
+
+5. **file.choose()** - This function allows for interactive choosing of a file. For instance, if you want to read in a csv file from a different location and you do not want to explicitly write down the file path, you could use file.choose() function.
+
+```{r file_choose}
+#NOT RUN
+#dat = read.csv(file.choose()) # This helps you navigate to the folder containing the file you want to read
+
+```
+6. **OTHER USEFUL FILE MANIPULATION FUNCTIONS**
+See other useful file manipulation functions
+```{r other_file_functions}
+#NOT RUN
+#dir.create("tmp") #Creates a directory named 'tmp'
+
+#file.copy("sleep.sav", "tmp") # Copies the file "sleep.sav" to "tmp" folder
+
+#unlink("tmp", recursive = TRUE) #Deletes the folder "tmp"
+
+#file.create(c("a.txt","b.txt")) #creates two files "a.txt" and "b.txt"
+
+#file.remove("a.txt", "b.txt") #Delete two files "a.txt" and "b.txt""
+
+#file.create("a")
+#file.rename("a","a_1") #Renames file "a" to "a_1"
+
+```
+
